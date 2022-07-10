@@ -1,10 +1,9 @@
 package ru.netology.shop;
 
 public class RepositoriProduct {
-
     Product[] products = new Product[0];
 
-    public void add(Product productN) {
+    public void save(Product productN) {
         int length = products.length + 1;
         Product[] tmp = new Product[length];
         for (int i = 0; i < products.length; i++) {
@@ -18,11 +17,11 @@ public class RepositoriProduct {
         return products;
     }
 
-    public void delete(int idN){
+   /* public void delete(int idN) {
         int length = products.length - 1;
         Product[] tmp = new Product[length];
-        int j =0;
-        for (Product product :products ) {
+        int j = 0;
+        for (Product product : products) {
             if (product.getId() != idN) {
                 tmp[j] = product;
                 j++;
@@ -30,8 +29,5 @@ public class RepositoriProduct {
         }
         products = tmp;
 
-    }
-    public Product[] findAll() {
-        return products;
-    }
+    } */
 }

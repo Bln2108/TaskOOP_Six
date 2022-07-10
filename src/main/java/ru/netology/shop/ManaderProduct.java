@@ -3,28 +3,28 @@ package ru.netology.shop;
 public class ManaderProduct {
     private RepositoriProduct repository;
 
-// public ManaderProduct (RepositoriProduct repository) { this.repository = repository;}
+    public ManaderProduct(RepositoriProduct repository) {
+        this.repository = repository;
+    }
 
-    publiс
-
-    void add(Product product) {
-        repository.add(product);
+    public void add(Product product) {
+        repository.save(product);
     }
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        int j =0;
         // тут будем хранить подошедшие запросу продукты
-        for (Product product : repository.findAll()) {
+        for (Product product : repository.getProductAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
-                tmp [j] =product;
-                j++;
+                for (int i = 0; i < result.length; i++) {
+                    tmp[i] = result[i];
+                }
+                tmp[tmp.length - 1] = product;
                 result = tmp;
             }
 
         }
-
         // "добавляем в конец" массива result продукт product
         return result;
     }
@@ -35,7 +35,7 @@ public class ManaderProduct {
             return true;
         } else {
             return false;
-        }          // return product.getName().contains(search);
+        }
     }
 
 
